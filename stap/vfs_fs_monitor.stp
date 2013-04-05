@@ -34,6 +34,7 @@ probe timer.s($1)
 	}
 	printf("%-25s, fs write:\n", ctime(gettimeofday_s()));
 	delete read_stat;
+	delete read_byte;
 	foreach ([n, p, d, i] in write_stat- limit 10) {
 		printf("%-20s%d %5s %10u %10d %10d\n", n, p, d, i, 
 			write_stat[n, p, d, i],
@@ -41,6 +42,7 @@ probe timer.s($1)
 		
 	}
 	delete write_stat;
+	delete write_byte;
 	printf("\n\n");
 }
 
